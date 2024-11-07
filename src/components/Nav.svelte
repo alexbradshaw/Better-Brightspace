@@ -18,10 +18,14 @@
 </nav>
 
 <style>
+  * {
+    background-color: #fafbff;
+  }
+
   #upperNav {
     display: grid;
     justify-content: center;
-    border-top: 4px solid black;
+    border-top: 4px solid rgba(185, 5, 5, 0.754);
     text-align: center;
   }
 

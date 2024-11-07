@@ -246,6 +246,7 @@
     display: grid;
     justify-items: center;
     align-content: flex-start;
+    background-color: #fafbff;
   }
 
   .aside > button {
@@ -256,7 +257,6 @@
     min-height: 40px;
     border: solid black;
     border-width: 0px 0px 1px 0px;
-    background-color: white;
     cursor: pointer;
   }
 
@@ -298,6 +298,7 @@
     height: 500px;
     border: 3px solid black;
     border-radius: 20px;
+    background-color: #fafbff;
   }
 
   #quizBody > div {
@@ -353,7 +354,6 @@
     border-radius: 0px;
     border: 0px;
     padding: 0px;
-    background-color: white;
     font-size: x-small;
   }
 </style>
