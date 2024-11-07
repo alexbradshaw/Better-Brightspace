@@ -2,45 +2,126 @@ CREATE ROLE templateuser
 WITH
     LOGIN NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION PASSWORD 'testpassword';
 
-CREATE TABLE verification_token (
-    identifier TEXT NOT NULL,
-    expires TIMESTAMPTZ NOT NULL,
-    token TEXT NOT NULL,
-    PRIMARY KEY (identifier, token)
-);
-
-CREATE TABLE accounts (
+CREATE TABLE person (
     id SERIAL,
-    "userId" INTEGER NOT NULL,
-    type VARCHAR(255) NOT NULL,
-    provider VARCHAR(255) NOT NULL,
-    "providerAccountId" VARCHAR(255) NOT NULL,
-    refresh_token TEXT,
-    access_token TEXT,
-    expires_at BIGINT,
-    id_token TEXT,
-    scope TEXT,
-    session_state TEXT,
-    token_type TEXT,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE sessions (
+CREATE TABLE message (
     id SERIAL,
-    "userId" INTEGER NOT NULL,
-    expires TIMESTAMPTZ NOT NULL,
-    "sessionToken" VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    userId INTEGER NOT NULL,
+    FOREIGN KEY (userId) REFERENCES person (id),
     PRIMARY KEY (id)
 );
 
-CREATE TABLE users (
+CREATE TABLE resource (
     id SERIAL,
-    name VARCHAR(255),
-    email VARCHAR(255),
-    "emailVerified" TIMESTAMPTZ,
-    image TEXT,
+    resource VARCHAR(200) NOT NULL,
+    type VARCHAR(200) NOT NULL,
+    size VARCHAR(200) NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE template (
+    id SERIAL,
+    name VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO
+    person (id, firstName, lastName)
+VALUES (0, 'Hemadri', 'Jayalath');
+
+INSERT INTO
+    person (firstName, lastName)
+VALUES ('Alex', 'Bradshaw'),
+    ('Kan', 'Eskender'),
+    ('Alistair', 'Lee'),
+    ('Shivang', 'Patel'),
+    ('Bryan', 'Ponce'),
+    ('Josh', 'Pyon'),
+    ('Dalton', 'Shepard');
+
+INSERT INTO
+    message (body, userId)
+VALUES (
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco',
+        0
+    ),
+    (
+        'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?',
+        1
+    ),
+    (
+        'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        0
+    ),
+    (
+        'O inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum',
+        0
+    ),
+    ('Heard that', 1);
+
+INSERT INTO
+    message (body, userId)
+VALUES (
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco',
+        0
+    ),
+    (
+        'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?',
+        1
+    ),
+    (
+        'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        0
+    ),
+    (
+        'O inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum',
+        0
+    ),
+    ('Heard that', 1);
+
+INSERT INTO
+    resource (resource, type, size)
+VALUES (
+        'Donald A. Norman. 2013. The Design of Everyday Things. Basic Books, New York, New York, Revised and Expanded Edition edition.',
+        'PDF',
+        '123 MB'
+    ),
+    (
+        'https://uga.view.usg.edu/d2l/le/content/3315150/viewContent/52499643/View',
+        'Website',
+        'N/A'
+    );
+
+INSERT INTO
+    template (name)
+VALUES ('Milestone 0: IRB Training'),
+    (
+        'Milestone 1: Problem Proposal'
+    ),
+    (
+        'Milestone 2: Understanding the Problem'
+    ),
+    (
+        'Milestone 3: Define + Ideate'
+    ),
+    (
+        'Milestone 4: Low-Fi Prototyping & Pilot Usability Testing'
+    ),
+    (
+        'Milestone Presentation Evaluation'
+    ),
+    ('Breakout Activity'),
+    ('Design Thinking');
 
 GRANT pg_read_all_stats TO templateuser;
 

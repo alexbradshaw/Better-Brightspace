@@ -8,6 +8,19 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
+
+  interface message {
+    userid: number;
+    body: string;
+    id: number;
+  }
+
+  interface resource {
+    resource: string;
+    type: string;
+    size: string;
+    id: number;
+  }
 }
 
-export {}
+export {};
