@@ -1,7 +1,16 @@
+<script lang="ts">
+  import logo from '$lib/logo.png';
+</script>
+
 <nav>
   <section id="upperNav">
     <div>
-      <img src="" alt="logo" />
+      <a
+        href="https://github.com/alexbradshaw/Better-Brightspace"
+        target="_blank"
+      >
+        <img src={logo} alt="logo" />
+      </a>
       <h3>CSCI 4800 Human Computer Interaction</h3>
       <a href="#"><h3>View All Courses</h3></a>
       <h3>Hemadri Jayalath</h3>
@@ -20,6 +29,11 @@
 <style>
   * {
     background-color: #fafbff;
+  }
+
+  img {
+    width: 40px;
+    border-radius: 10px;
   }
 
   #upperNav {

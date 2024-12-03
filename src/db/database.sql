@@ -125,12 +125,9 @@ VALUES ('Milestone 0: IRB Training'),
 
 GRANT pg_read_all_stats TO templateuser;
 
-GRANT
-INSERT
-,
+GRANT INSERT,
 SELECT, DELETE,
 UPDATE, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA public TO templateuser;
 
 GRANT USAGE,
-SELECT
-    ON ALL SEQUENCES IN SCHEMA public TO templateuser;
+SELECT ON ALL SEQUENCES IN SCHEMA public TO templateuser;
