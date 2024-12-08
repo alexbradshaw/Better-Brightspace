@@ -9,9 +9,17 @@ declare global {
     // interface Platform {}
   }
 
+  interface person {
+    firstname: string;
+    lastname: string;
+    teacher: boolean;
+    id: number;
+  }
+
   interface message {
     userid: number;
     body: string;
+    members: number[];
     id: number;
   }
 

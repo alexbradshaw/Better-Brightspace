@@ -8,7 +8,9 @@ export const pool = new Pool(
       }
     : {
         user: 'templateuser',
-        host: process.env.DATABASE_HOST || 'localhost',
+        host:
+          process.env.DATABASE_HOST ||
+          (process.platform === 'darwin' ? '0.0.0.0' : 'localhost'),
         database: 'templateDB',
         password: 'testpassword',
         port: 5432,

@@ -1,5 +1,12 @@
 <script lang="ts">
   import logo from '$lib/logo.png';
+  import { currentUser, currentUserId } from '$lib/store';
+
+  export let users: person[];
+
+  currentUserId.subscribe((id) => {
+    currentUser.set(users[id]);
+  });
 </script>
 
 <nav>
@@ -12,15 +19,26 @@
         <img src={logo} alt="logo" />
       </a>
       <h3>CSCI 4800 Human Computer Interaction</h3>
-      <a href="#"><h3>View All Courses</h3></a>
-      <h3>Hemadri Jayalath</h3>
+      <a href="/"><h3>View All Courses</h3></a>
+      <label for="users">Active User:</label>
+      <select name="users" id="users" bind:value={$currentUserId}>
+        {#each users as user}
+          <option value={user.id}>
+            {user.firstname + ' ' + user.lastname}
+          </option>
+        {/each}
+      </select>
     </div>
   </section>
   <section id="courseNav">
     <div>
       <a href="/">Home</a>
-      <a href="#">Assignments</a>
-      <a href="/grading">Grading</a>
+      <a href="/assignments">Assignments</a>
+      {#if $currentUser.teacher}
+        <a href="/grading">Grading</a>
+      {:else}
+        <a href="/grades">Grades</a>
+      {/if}
       <a href="/messaging">Messaging</a>
     </div>
   </section>

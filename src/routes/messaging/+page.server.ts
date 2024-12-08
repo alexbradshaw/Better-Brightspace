@@ -12,10 +12,14 @@ export const actions = {
     const data = await request.formData();
 
     const sql_query = `INSERT INTO
-    message (body, userId) VALUES ($1, $2) 
+    message (body, userId, members) VALUES ($1, $2, $3) 
     RETURNING *;`;
 
-    const params = [data.get('message'), 1];
+    const params = [
+      data.get('message'),
+      data.get('userId'),
+      data.get('memberList'),
+    ];
 
     const result = await query(sql_query, params);
 

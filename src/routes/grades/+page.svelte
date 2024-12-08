@@ -5,7 +5,7 @@
 
   currentUser.subscribe((user) => {
     if (!user.teacher) {
-      goto('/grades');
+      goto('/grading');
     }
   });
 

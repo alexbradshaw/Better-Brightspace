@@ -3,7 +3,7 @@
   "version": "1",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"vite dev --host\" \"docker compose up --force-recreate db\"",
+    "dev": "concurrently \"vite dev --host\" \"docker compose down --volumes && docker compose up --force-recreate db\"",
     "build": "docker compose up --force-recreate",
     "vitebuild": "vite build",
     "preview": "vite preview",
