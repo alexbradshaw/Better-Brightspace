@@ -1,6 +1,5 @@
 <script lang="ts">
-  import Row from '$components/Row.svelte';
-  import { modalVisible, resources, resourcesOpen } from '$lib/store.js';
+  import { resources, resourcesOpen } from '$lib/store.js';
   import { onMount } from 'svelte';
   import type { ActionData } from './$types.js';
 
@@ -189,9 +188,6 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 5px 120px;
-  }
-
-  .question {
   }
 
   .choices {
