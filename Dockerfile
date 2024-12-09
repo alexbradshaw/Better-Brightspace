@@ -13,7 +13,7 @@ COPY --from=builder /app/build build/
 COPY --from=builder /app/node_modules node_modules/
 COPY package.json .
 
-ENV ORIGIN "http://localhost:3000"
+ENV ORIGIN "https://better-brightspace-256619215082.us-east1.run.app/"
 # ENV CONNECTION_STRING ""
 
 
