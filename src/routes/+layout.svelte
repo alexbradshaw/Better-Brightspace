@@ -12,15 +12,9 @@
     members.set([data.users[0], data.users[1]]);
   }
 
-  $: if ($currentUser.teacher) {
-    if ($page.url.pathname == '/grades') {
-      goto('/grading');
-    }
-  } else {
+  $: if (!$currentUser.teacher) {
     if ($page.url.pathname === '/') {
       goto('/assignments');
-    } else if ($page.url.pathname == '/grading') {
-      goto('/grades');
     }
   }
 </script>

@@ -10,7 +10,7 @@ export async function load() {
 }
 
 export const actions = {
-  default: async ({ request }) => {
+  create: async ({ request }) => {
     const data = await request.formData();
 
     const sql_query = `INSERT INTO
@@ -29,5 +29,16 @@ export const actions = {
     const result = await query(sql_query, params);
 
     return { newResource: result.rows[0] };
+  },
+  delete: async ({ request }) => {
+    const data = await request.formData();
+
+    const sql_query = `DELETE FROM resource WHERE id = $1`;
+
+    const params = [data.get('id')];
+
+    const result = await query(sql_query, params);
+
+    return { deleteSuccess: result.rowCount != 0 };
   },
 } satisfies Actions;

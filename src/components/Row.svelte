@@ -1,15 +1,40 @@
 <script lang="ts">
+  import { resources } from '$lib/store';
+
   export let resource;
   export let type;
   export let size;
-  export let id: Number;
+  export let id: number;
+
+  const deleteItem = async (id: number) => {
+    const params = new URLSearchParams();
+    params.append('id', id.toString());
+
+    console.log(id);
+
+    const deleteResp = await fetch('?/delete', {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
+      body: params.toString(),
+    });
+
+    if (deleteResp.ok) {
+      resources.update((resources) =>
+        resources.filter((resource) => {
+          if (resource.id != id) {
+            return resource;
+          }
+        }),
+      );
+    }
+  };
 </script>
 
 <div id="row" data-value={id.toString()}>
   <div>{resource}</div>
   <div>{type}</div>
   <div>{size}</div>
-  <div><button class="delete">x</button></div>
+  <div><button class="delete" on:click={() => deleteItem(id)}>x</button></div>
 </div>
 
 <style>

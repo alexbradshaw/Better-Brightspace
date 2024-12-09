@@ -8,7 +8,7 @@
 </script>
 
 <div id="container" on:click={closeModal}>
-  <form method="POST" on:click|stopPropagation use:enhance>
+  <form method="POST" on:click|stopPropagation action="?/create">
     <h2>New Resource</h2>
     <div class="input">
       <label for="resource">Resource</label>

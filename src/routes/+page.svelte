@@ -32,14 +32,14 @@
             resource={resource.resource}
             type={resource.type}
             size={resource.size}
-            id={index}
+            id={resource.id}
           />
         {/each}
       </div>
       <div>
-        <button id="add" on:click={() => modalVisible.set(true)}
-          >Add an allowed resource for Quiz 1 +</button
-        >
+        <button id="add" on:click={() => modalVisible.set(true)}>
+          Add an allowed resource for Quiz 1 +
+        </button>
       </div>
     </div>
   </section>

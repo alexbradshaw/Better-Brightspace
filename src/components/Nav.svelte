@@ -35,11 +35,7 @@
     <div>
       <a href="/">Home</a>
       <a href="/assignments">Assignments</a>
-      {#if $currentUser.teacher}
-        <a href="/grading">Grading</a>
-      {:else}
-        <a href="/grades">Grades</a>
-      {/if}
+      <a href="/grading">Grading</a>
       <a href="/messaging">Messaging</a>
     </div>
   </section>
