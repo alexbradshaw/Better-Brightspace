@@ -1,11 +1,12 @@
 <script lang="ts">
   import logo from '$lib/logo.png';
-  import { currentUser, currentUserId } from '$lib/store';
+  import { currentUser, currentUserId, members } from '$lib/store';
 
   export let users: person[];
 
   currentUserId.subscribe((id) => {
     currentUser.set(users[id]);
+    members.set([users[id], users[users.length - id - 1]]);
   });
 </script>
 

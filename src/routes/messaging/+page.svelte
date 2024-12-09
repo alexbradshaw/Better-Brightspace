@@ -128,7 +128,7 @@
               </option>
             {/each}
           </select>
-          <button on:click={() => addMemberToList()}>Check</button>
+          <button on:click={() => addMemberToList()}> ✔ </button>
           <button on:click={() => lightSwitch(false)}> X </button>
         </div>
       {:else if $members.length != data.users.length}

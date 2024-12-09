@@ -83,7 +83,29 @@ VALUES (
         0,
         '{0, 1}'
     ),
-    ('Heard that', 1, '{0, 1}');
+    ('Heard that', 1, '{0, 1}'),
+    (
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco',
+        7,
+        '{0, 7}'
+    ),
+    (
+        'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?',
+        0,
+        '{0, 7}'
+    ),
+    (
+        'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        7,
+        '{0, 7}'
+    ),
+    (
+        'O inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum',
+        0,
+        '{0, 7}'
+    );
 
 INSERT INTO
     resource (resource, type, size)

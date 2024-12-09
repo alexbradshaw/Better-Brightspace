@@ -1,15 +1,8 @@
 <script lang="ts">
   import Row from '$components/Row.svelte';
-  import { currentUser, modalVisible, resources } from '$lib/store.js';
+  import { modalVisible, resources } from '$lib/store.js';
   import { onMount } from 'svelte';
   import type { ActionData } from './$types.js';
-  import { goto } from '$app/navigation';
-
-  currentUser.subscribe((user) => {
-    if (!user.teacher) {
-      goto('/assignments');
-    }
-  });
 
   export let data;
   export let form: ActionData;

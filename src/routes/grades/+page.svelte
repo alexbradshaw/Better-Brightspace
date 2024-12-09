@@ -1,13 +1,5 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import { currentUser } from '$lib/store.js';
   import { writable } from 'svelte/store';
-
-  currentUser.subscribe((user) => {
-    if (!user.teacher) {
-      goto('/grading');
-    }
-  });
 
   export let data;
 
