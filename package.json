@@ -3,7 +3,8 @@
   "version": "1",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"vite dev --host\" \"docker compose down --volumes && docker compose up --force-recreate db\"",
+    "dev": "concurrently -c red,blue -n database,svelte --restart-tries 3 \"docker compose down --volumes && docker compose up --force-recreate db\" \"sleep 5 && vite dev --host\"",
+    "dbconnect": "bash ./src/db/connect.bash",
     "build": "docker compose up --force-recreate",
     "vitebuild": "vite build",
     "preview": "vite preview",
