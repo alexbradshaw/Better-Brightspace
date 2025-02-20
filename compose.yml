@@ -25,9 +25,10 @@ services:
       POSTGRES_USER: templateuser
       POSTGRES_DB: templateDB
       POSTGRES_PASSWORD: testpassword
-    command: ['postgres', '-c', 'listen_addresses=*']
+      command: ['postgres', '-c', 'listen_addresses=*']
     volumes:
       - ./src/db/database.sql:/docker-entrypoint-initdb.d/baseDB.sql
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
