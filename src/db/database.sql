@@ -1,8 +1,3 @@
-DROP ROLE IF EXISTS templateuser;
-CREATE USER templateuser
-WITH
-    NOSUPERUSER INHERIT NOCREATEDB CREATEROLE NOREPLICATION PASSWORD 'testpassword';
-
 CREATE TABLE person (
     id SERIAL,
     firstName VARCHAR(50) NOT NULL,
@@ -139,15 +134,3 @@ VALUES ('Milestone 0: IRB Training'),
     ),
     ('Breakout Activity'),
     ('Design Thinking');
-
-GRANT pg_read_all_stats TO templateuser;
-
--- GRANT INSERT,
--- SELECT, DELETE,
--- UPDATE, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA public TO templateuser;
-
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO templateuser;
-
-GRANT USAGE,
-SELECT
-    ON ALL SEQUENCES IN SCHEMA public TO templateuser;
